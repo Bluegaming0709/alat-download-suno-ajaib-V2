@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alat Download Suno Ajaib</title>
+<style>
+  :root{--sky:#1296db;--sky2:#4fc3f7;--deep:#0b6fa8;--red:#e53935;--yellow:#ffc107;--ink:#12303f;--card:#ffffff;}
+  *{box-sizing:border-box} body{margin:0;font-family:'Segoe UI',system-ui,Arial,sans-serif;background:linear-gradient(180deg,#7ecbf2 0%,#bde7fb 45%,#e8f8ff 100%);color:var(--ink);min-height:100vh}
+  .cloud{position:fixed;background:#fff;border-radius:999px;opacity:.85;z-index:0;pointer-events:none}
+  .cloud:before,.cloud:after{content:'';position:absolute;background:#fff;border-radius:50%}
+  .c1{width:120px;height:36px;top:60px;left:6%}.c1:before{width:56px;height:56px;top:-26px;left:16px}.c1:after{width:40px;height:40px;top:-16px;right:14px}
+  .c2{width:90px;height:28px;top:150px;right:8%}.c2:before{width:44px;height:44px;top:-20px;left:12px}.c2:after{width:30px;height:30px;top:-12px;right:10px}
+  .wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:18px 14px 90px}
+  /* Doraemon face (pure CSS) */
+  .dora{width:150px;height:138px;margin:8px auto 0;position:relative}
+  .dora .head{position:absolute;inset:0;background:var(--sky);border:3px solid #0d5d8a;border-radius:50%}
+  .dora .face{position:absolute;left:16px;right:16px;bottom:10px;top:34px;background:#fff;border-radius:50%}
+  .dora .eye{position:absolute;top:22px;width:26px;height:34px;background:#fff;border:2.5px solid #12303f;border-radius:50%;z-index:2}
+  .dora .eye.l{left:44px}.dora .eye.r{right:44px}
+  .dora .eye:after{content:'';position:absolute;left:8px;bottom:6px;width:9px;height:13px;background:#12303f;border-radius:50%}
+  .dora .nose{position:absolute;top:52px;left:50%;transform:translateX(-50%);width:17px;height:17px;background:var(--red);border:2px solid #8e1414;border-radius:50%;z-index:2}
+  .dora .mouth{position:absolute;top:66px;left:50%;transform:translateX(-50%);width:64px;height:32px;border-bottom:3px solid #12303f;border-radius:0 0 60px 60px;z-index:1}
+  .dora .whisk{position:absolute;width:40px;height:2.5px;background:#12303f;z-index:2}
+  .dora .w1{top:64px;left:8px;transform:rotate(12deg)}.dora .w2{top:76px;left:6px}.dora .w3{top:88px;left:8px;transform:rotate(-12deg)}
+  .dora .w4{top:64px;right:8px;transform:rotate(-12deg)}.dora .w5{top:76px;right:6px}.dora .w6{top:88px;right:8px;transform:rotate(12deg)}
+  .dora .copter{position:absolute;top:-16px;left:50%;transform:translateX(-50%);z-index:3;text-align:center}
+  .dora .copter .blades{width:84px;height:10px;background:#ffe082;border:2px solid #c79a00;border-radius:999px;margin:0 auto}
+  .dora .copter .stick{width:6px;height:14px;background:#c79a00;margin:0 auto}
+  .collar{height:16px;background:var(--red);border-radius:8px;max-width:300px;margin:6px auto 0;position:relative;border:2px solid #8e1414}
+  .collar:after{content:'';position:absolute;left:50%;top:8px;transform:translateX(-50%);width:24px;height:24px;background:var(--yellow);border:2.5px solid #c79a00;border-radius:50%}
+  h1{text-align:center;margin:26px 0 2px;font-size:30px;letter-spacing:.5px;color:#083f5c;text-shadow:0 2px 0 #fff}
+  .sub{text-align:center;margin:0 0 18px;font-weight:700;color:var(--deep);letter-spacing:2px}
+  .card{background:var(--card);border:3px solid #0d5d8a;border-radius:20px;padding:16px;margin:14px 0;box-shadow:0 6px 0 rgba(13,93,138,.25)}
+  .card h2{margin:0 0 4px;font-size:19px;color:#083f5c}
+  .badge{display:inline-block;background:var(--yellow);border:2px solid #c79a00;color:#5d4300;font-weight:800;font-size:11px;padding:2px 9px;border-radius:999px;vertical-align:middle;margin-left:6px}
+  .badge.ok{background:#a5d6a7;border-color:#2e7d32;color:#1b5e20}
+  input[type=text],input[type=password],select{width:100%;padding:12px;border:2.5px solid #90caf9;border-radius:12px;font-size:15px;background:#f4fbff;color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--sky)}
+  button{cursor:pointer;border:none;border-radius:999px;padding:11px 18px;font-weight:800;font-size:14px;letter-spacing:.4px}
+  .b-sky{background:var(--sky);color:#fff;box-shadow:0 4px 0 var(--deep)} .b-sky:active{transform:translateY(2px);box-shadow:0 2px 0 var(--deep)}
+  .b-red{background:var(--red);color:#fff;box-shadow:0 4px 0 #8e1414} .b-red:active{transform:translateY(2px);box-shadow:0 2px 0 #8e1414}
+  .b-ghost{background:#fff;color:var(--deep);border:2.5px solid var(--deep)}
+  .b-yellow{background:var(--yellow);color:#5d4300;box-shadow:0 4px 0 #c79a00}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .status{margin-top:10px;padding:9px 12px;border-left:5px solid var(--sky);background:#e3f4fd;border-radius:8px;font-size:14px;display:none}
+  .status.err{border-color:var(--red);background:#fdecea}
+  details{background:#f4fbff;border:2px dashed #90caf9;border-radius:12px;padding:10px 12px;margin-top:10px;font-size:13.5px}
+  .song{display:flex;gap:10px;align-items:center;padding:9px;border:2px solid #d6eefb;border-radius:14px;margin-top:8px;background:#fbfeff}
+  .song img{width:52px;height:52px;border-radius:10px;object-fit:cover;background:#d6eefb}
+  .song .t{flex:1;min-width:0}.song .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .song .st{font-size:12.5px;color:var(--deep);font-weight:700}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:3px solid #0d5d8a;padding:10px 14px;z-index:5;display:none}
+  .bar .track{height:16px;background:#d6eefb;border-radius:999px;overflow:hidden;border:2px solid #0d5d8a}
+  .bar .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--sky2),var(--sky));transition:width .3s}
+  .bar .lbl{display:flex;justify-content:space-between;font-weight:800;font-size:13.5px;margin-bottom:6px;gap:10px}
+  #gate{max-width:440px;margin:5vh auto 0;text-align:center}
+  .marquee{overflow:hidden;white-space:nowrap;background:#083f5c;color:#fff;border-radius:999px;padding:6px 0;font-weight:800;letter-spacing:2px;font-size:13px;margin-bottom:8px}
+  .marquee span{display:inline-block;padding-left:100%;animation:mq 18s linear infinite}
+  @keyframes mq{to{transform:translateX(-100%)}}
+  footer{text-align:center;font-size:13px;color:#33566b;margin-top:20px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="wrap">
+  <div class="marquee"><span>ALAT DOWNLOAD SUNO AJAIB ★ KANTONG AJAIB ★ DECRYPT DI SERVER ★ HASIL .M4A ★ TANPA SIMPAN TOKEN ★&nbsp;</span></div>
+
+  <!-- GATE -->
+  <div id="gate" class="card">
+    <div class="dora"><div class="copter"><div class="blades"></div><div class="stick"></div></div><div class="head"></div><div class="face"></div><div class="eye l"></div><div class="eye r"></div><div class="nose"></div><div class="mouth"></div><div class="whisk w1"></div><div class="whisk w2"></div><div class="whisk w3"></div><div class="whisk w4"></div><div class="whisk w5"></div><div class="whisk w6"></div></div>
+    <div class="collar"></div>
+    <h1>ALAT DOWNLOAD<br>SUNO AJAIB</h1>
+    <p class="sub">PINTU TERKUNCI — MASUKKAN PASSWORD</p>
+    <input type="password" id="gatePass" placeholder="Password..." autocomplete="off">
+    <div class="row" style="justify-content:center"><button class="b-red" id="gateBtn" style="font-size:16px;padding:13px 34px">MASUK</button></div>
+    <div class="status" id="gateStatus"></div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+    <div class="dora"><div class="copter"><div class="blades"></div><div class="stick"></div></div><div class="head"></div><div class="face"></div><div class="eye l"></div><div class="eye r"></div><div class="nose"></div><div class="mouth"></div><div class="whisk w1"></div><div class="whisk w2"></div><div class="whisk w3"></div><div class="whisk w4"></div><div class="whisk w5"></div><div class="whisk w6"></div></div>
+    <div class="collar"></div>
+    <h1>ALAT DOWNLOAD SUNO AJAIB</h1>
+    <p class="sub">DORAEMON EDITION</p>
+
+    <div class="card">
+      <h2>01 — Kantong Token <span class="badge" id="tokenBadge">BELUM LOGIN</span></h2>
+      <details><summary><b>CARA AMBIL TOKEN</b></summary>
+        Buka suno.com, login. DevTools (F12) → tab Network. Klik request apa saja ke studio-api-prod.suno.com. Di Request Headers cari <i>authorization: Bearer eyJ…</i> Copy bagian eyJ… saja (tanpa kata "Bearer"), paste di bawah. Token Suno cuma hidup 1 jam. Kalau daftar lagu tiba-tiba kosong, ambil token baru.
+      </details>
+      <div style="margin-top:10px"><input type="text" id="tokenInput" placeholder="eyJhbGciOiJSUzI1NiIs…" autocomplete="off"></div>
+      <div class="row"><button class="b-sky" id="setTokenBtn">SET TOKEN</button><button class="b-ghost" id="clearTokenBtn">CLEAR</button></div>
+      <div class="status" id="tokenStatus"></div>
+    </div>
+
+    <div class="card">
+      <h2>02 — Lemari Lagu</h2>
+      <label style="font-weight:700;font-size:13px">WORKSPACE / PLAYLIST</label>
+      <select id="workspaceSel"><option value="all">Semua Lagu — seluruh akun</option></select>
+      <div class="row">
+        <button class="b-sky" id="loadBtn">LOAD LAGU</button>
+        <button class="b-ghost" id="prevBtn" disabled>‹ PREV</button>
+        <button class="b-ghost" id="nextBtn" disabled>NEXT ›</button>
+        <button class="b-ghost" id="selAllBtn">PILIH SEMUA</button>
+        <button class="b-ghost" id="selNoneBtn">KOSONGKAN</button>
+      </div>
+      <div class="status" id="listStatus"></div>
+      <div id="songList"><p style="color:#5b7d90">Set token dulu, terus klik LOAD LAGU.</p></div>
+    </div>
+
+    <div class="card">
+      <h2>03 — Pintu Kemana Saja</h2>
+      <p style="margin:4px 0 10px;font-size:14px">Download 1 lagu langsung: paste UUID, URL suno.com/song/…, atau short link suno.com/s/…. Lagu publik jalan tanpa token.</p>
+      <input type="text" id="byIdInput" placeholder="Tempel ID / URL lagu di sini…" autocomplete="off">
+      <div class="row"><button class="b-red" id="byIdBtn">AMBIL LAGUNYA</button></div>
+      <div class="status" id="byIdStatus"></div>
+      <div id="byIdResult"></div>
+    </div>
+
+    <footer>Audio di-decrypt jadi file <b>.m4a</b> (format asli Suno, bukan mp3). Token kamu cuma dipakai dari browser kamu buat manggil Suno — nggak disimpan di server.</footer>
+  </div>
+</div>
+
+<div class="bar" id="bar">
+  <div class="lbl"><span id="barCount">0 DIPILIH</span><span id="barText"></span></div>
+  <div class="track"><div class="fill" id="barFill"></div></div>
+  <div class="row"><button class="b-red" id="dlAllBtn">DOWNLOAD SEMUA</button><button class="b-ghost" id="stopBtn">STOP</button></div>
+</div>
+
+<script>
+const GATE_PASSWORD = '121212Sofy';
+const $ = id => document.getElementById(id);
+let token = sessionStorage.getItem('sd_token') || '';
+let songs = []; let page = 0; let stopFlag = false;
+const prepared = {}; // id -> {blob, filename, url}
+
+function showStatus(el, msg, isErr){ el.textContent = msg; el.className = 'status' + (isErr ? ' err' : ''); el.style.display = 'block'; }
+
+// ---------- GATE ----------
+function openApp(){ $('gate').classList.add('hidden'); $('app').classList.remove('hidden'); if(token){ $('tokenInput').value = token; $('tokenBadge').textContent='TOKEN TERISI'; $('tokenBadge').classList.add('ok'); } }
+$('gateBtn').onclick = () => {
+  if ($('gatePass').value === GATE_PASSWORD){ sessionStorage.setItem('sd_gate','1'); openApp(); }
+  else showStatus($('gateStatus'), 'Password salah', true);
+};
+$('gatePass').addEventListener('keydown', e => { if(e.key==='Enter') $('gateBtn').click(); });
+if (sessionStorage.getItem('sd_gate') === '1') openApp();
+
+// ---------- SAVE FLOW (real user-gesture save) ----------
+async function savePrepared(p){
+  if (window.showSaveFilePicker){
+    try {
+      const handle = await window.showSaveFilePicker({ suggestedName: p.filename, types: [{ description:'Audio M4A', accept:{ 'audio/mp4':['.m4a'] } }] });
+      const w = await handle.createWritable(); await w.write(p.blob); await w.close(); return true;
+    } catch(e){ if (e && e.name === 'AbortError') return false; }
+  }
+  const a = document.createElement('a'); a.href = p.url; a.download = p.filename; document.body.appendChild(a); a.click(); a.remove(); return true;
+}
+async function prepareSong(id, tk){
+  const r = await fetch('/api/download', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id, token: tk || undefined }) });
+  if (!r.ok){ let m='Gagal'; try{ m=(await r.json()).error||m }catch(e){} throw new Error(m); }
+  const blob = await r.blob();
+  const cd = r.headers.get('Content-Disposition') || '';
+  let filename = id + '.m4a'; const mm = cd.match(/filename\*=UTF-8''([^;]+)/i); if (mm) filename = decodeURIComponent(mm[1]);
+  const p = { blob, filename, url: URL.createObjectURL(blob) };
+  prepared[id] = p; return p;
+}
+
+// ---------- TOKEN ----------
+$('setTokenBtn').onclick = async () => {
+  const v = $('tokenInput').value.trim().replace(/^Bearer\s+/i,'');
+  if (!v){ showStatus($('tokenStatus'), 'Isi token dulu.', true); return; }
+  token = v; sessionStorage.setItem('sd_token', v);
+  showStatus($('tokenStatus'), 'Mengecek token ke Suno…');
+  try {
+    const r = await fetch('/api/workspaces', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ token }) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Token ditolak');
+    const sel = $('workspaceSel'); sel.innerHTML = '';
+    data.workspaces.forEach(w => { const o=document.createElement('option'); o.value=w.id; o.dataset.type=w.type; o.textContent = w.name + (w.count!=null ? ` — ${w.count} lagu` : ''); sel.appendChild(o); });
+    $('tokenBadge').textContent = 'TOKEN VALID'; $('tokenBadge').classList.add('ok');
+    showStatus($('tokenStatus'), 'Token valid. Pilih workspace, terus klik LOAD LAGU.');
+  } catch(e){ $('tokenBadge').textContent='BELUM LOGIN'; $('tokenBadge').classList.remove('ok'); showStatus($('tokenStatus'), e.message, true); }
+};
+$('clearTokenBtn').onclick = () => { token=''; sessionStorage.removeItem('sd_token'); $('tokenInput').value=''; $('tokenBadge').textContent='BELUM LOGIN'; $('tokenBadge').classList.remove('ok'); };
+
+// ---------- SONG LIST ----------
+function selectedIds(){ return songs.filter(s => { const c = document.querySelector(`input[data-sel="${s.id}"]`); return c && c.checked; }); }
+function refreshBar(){
+  const n = selectedIds().length;
+  $('bar').style.display = songs.length ? 'block' : 'none';
+  $('barCount').textContent = n + ' DIPILIH';
+}
+function renderSongs(){
+  const box = $('songList'); box.innerHTML = '';
+  if (!songs.length){ box.innerHTML = '<p style="color:#5b7d90">Belum ada lagu. Klik LOAD LAGU.</p>'; refreshBar(); return; }
+  songs.forEach(s => {
+    const d = document.createElement('div'); d.className='song';
+    d.innerHTML = `<input type="checkbox" data-sel="${s.id}" checked style="width:20px;height:20px">
+      <img src="${s.image_url}" alt="" onerror="this.style.visibility='hidden'">
+      <div class="t"><b>${s.title.replace(/</g,'&lt;')}</b><span class="st" id="st-${s.id}">${s.duration ? Math.round(s.duration)+' detik' : ''}</span></div>
+      <span id="act-${s.id}"></span>`;
+    box.appendChild(d);
+    d.querySelector('input').onchange = refreshBar;
+  });
+  refreshBar();
+}
+async function loadSongs(){
+  if (!token){ showStatus($('listStatus'), 'Set token dulu di bagian 01.', true); return; }
+  const sel = $('workspaceSel'); const opt = sel.options[sel.selectedIndex];
+  showStatus($('listStatus'), 'Mengambil daftar lagu…');
+  try {
+    const r = await fetch('/api/feed', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ token, workspaceId: sel.value, type: opt ? opt.dataset.type : 'all', page }) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Gagal load lagu');
+    songs = data.clips || [];
+    $('listStatus').style.display='none';
+    if (!songs.length) showStatus($('listStatus'), 'Daftar lagu kosong di halaman ini. Kalau harusnya ada lagu, ambil token baru.', true);
+    $('prevBtn').disabled = page === 0; $('nextBtn').disabled = songs.length === 0;
+    renderSongs();
+  } catch(e){ showStatus($('listStatus'), e.message, true); }
+}
+$('loadBtn').onclick = () => { page = 0; loadSongs(); };
+$('prevBtn').onclick = () => { if (page>0){ page--; loadSongs(); } };
+$('nextBtn').onclick = () => { page++; loadSongs(); };
+$('selAllBtn').onclick = () => { document.querySelectorAll('input[data-sel]').forEach(c=>c.checked=true); refreshBar(); };
+$('selNoneBtn').onclick = () => { document.querySelectorAll('input[data-sel]').forEach(c=>c.checked=false); refreshBar(); };
+
+// ---------- BATCH DOWNLOAD ----------
+$('stopBtn').onclick = () => { stopFlag = true; };
+$('dlAllBtn').onclick = async () => {
+  const chosen = selectedIds(); if (!chosen.length) return;
+  stopFlag = false; $('dlAllBtn').disabled = true;
+  let ready = 0;
+  for (let i=0;i<chosen.length;i++){
+    if (stopFlag) break;
+    const s = chosen[i];
+    $('barText').textContent = `(${i+1}/${chosen.length}) ${s.title}`;
+    $('barFill').style.width = Math.round((i/chosen.length)*100) + '%';
+    const st = $('st-'+s.id); if (st) st.textContent = 'decrypting…';
+    try {
+      const p = await prepareSong(s.id, token);
+      ready++;
+      if (st) st.textContent = `siap · ${(p.blob.size/1048576).toFixed(1)} MB — ketuk SIMPAN`;
+      const act = $('act-'+s.id);
+      if (act){ act.innerHTML=''; const b=document.createElement('button'); b.className='b-red'; b.textContent='⬇ SIMPAN'; b.onclick = async () => { if (await savePrepared(p)){ if(st) st.textContent='tersimpan ✓'; b.disabled=true; } }; act.appendChild(b);
+        const t=document.createElement('button'); t.className='b-ghost'; t.textContent='TAB BARU'; t.onclick=()=>window.open(p.url,'_blank'); act.appendChild(t); }
+      // auto-save attempt (works on normal browser pages)
+      try { const a=document.createElement('a'); a.href=p.url; a.download=p.filename; document.body.appendChild(a); a.click(); a.remove(); } catch(e){}
+    } catch(e){ if (st) st.textContent = 'gagal: ' + e.message; }
+  }
+  $('barFill').style.width = '100%';
+  $('barText').textContent = stopFlag ? 'berhenti' : `selesai — ${ready} file siap`;
+  $('dlAllBtn').disabled = false;
+};
+
+// ---------- DOWNLOAD BY ID ----------
+$('byIdBtn').onclick = async () => {
+  const v = $('byIdInput').value.trim();
+  if (!v){ showStatus($('byIdStatus'), 'Isi song ID atau URL dulu.', true); return; }
+  const m = v.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i);
+  let id = m ? m[0] : null;
+  if (!id && v.includes('suno.com/s/')){ showStatus($('byIdStatus'), 'Short link perlu dibuka dulu buat dapat ID aslinya — buka link-nya di browser, copy URL suno.com/song/…-nya, paste ke sini.', true); return; }
+  if (!id){ showStatus($('byIdStatus'), 'ID lagu tidak ketemu di teks itu.', true); return; }
+  $('byIdBtn').disabled = true; showStatus($('byIdStatus'), 'Decrypting ' + id.slice(0,8) + '…');
+  try {
+    const p = await prepareSong(id, token);
+    $('byIdStatus').style.display='none';
+    const box = $('byIdResult'); box.innerHTML = '';
+    const info = document.createElement('p'); info.innerHTML = `<b>File siap (${(p.blob.size/1048576).toFixed(1)} MB)</b> — kalau belum masuk ke unduhan, ketuk tombol SIMPAN FILE.`; box.appendChild(info);
+    const b = document.createElement('button'); b.className='b-red'; b.style.fontSize='16px'; b.textContent = `⬇ SIMPAN FILE .M4A (${(p.blob.size/1048576).toFixed(1)} MB)`;
+    b.onclick = async () => { if (await savePrepared(p)) b.textContent = 'TERSIMPAN ✓'; };
+    box.appendChild(b);
+    const t = document.createElement('button'); t.className='b-ghost'; t.textContent='BUKA DI TAB BARU'; t.onclick=()=>window.open(p.url,'_blank'); box.appendChild(t);
+    try { const a=document.createElement('a'); a.href=p.url; a.download=p.filename; document.body.appendChild(a); a.click(); a.remove(); } catch(e){}
+  } catch(e){ showStatus($('byIdStatus'), e.message, true); }
+  $('byIdBtn').disabled = false;
+};
+</script>
+</body>
+</html>
